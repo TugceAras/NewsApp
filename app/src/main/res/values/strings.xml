@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">News</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="home">Home</string>
+    <string name="favorite">Favorite</string>
+    <string name="search">Search</string>
+    <string name="news">News</string>
+    <string name="favToolbar">Favorite News</string>
+    <string name="searchToolbar">Search News</string>
+    <string name="search_editText">Search...</string>
+    <string name="source">Source</string>
+    <string name="published_at">Published at</string>
+    <string name="news_title">News Title</string>
+    <string name="description">Description</string>
+    <string name="floating_button">Floating button</string>
+    <string name="webViewToolbar">Details</string>
+    <string name="homeToolbar">Breaking News</string>
+    <string name="share">Share</string>
+
+</resources>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.tugcearas.newsapp.ui.home.HomeFragment"
+        android:label="fragment_home"
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_homeFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteNewsFragment"
+        android:name="com.tugcearas.newsapp.ui.favorite.FavoriteNewsFragment"
+        android:label="fragment_favorite_news"
+        tools:layout="@layout/fragment_favorite_news" >
+        <action
+            android:id="@+id/action_favoriteNewsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+        <action
+            android:id="@+id/action_favoriteNewsFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchNewsFragment"
+        android:name="com.tugcearas.newsapp.ui.search.SearchNewsFragment"
+        android:label="fragment_search_news"
+        tools:layout="@layout/fragment_search_news" >
+        <action
+            android:id="@+id/action_searchNewsFragment_to_webViewFragment"
+            app:destination="@id/webViewFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/webViewFragment"
+        android:name="com.tugcearas.newsapp.ui.webview.WebViewFragment"
+        android:label="fragment_web_view"
+        tools:layout="@layout/fragment_web_view" >
+        <action
+            android:id="@+id/action_webViewFragment_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/webViewFragment"
+            app:popUpToInclusive="true" />
+        <argument
+            android:name="article"
+            app:argType="com.tugcearas.newsapp.data.model.Article" />
+        <argument
+            android:name="fromFavorites"
+            app:argType="boolean"
+            android:defaultValue="false" />
+        <argument
+            android:name="fromHome"
+            app:argType="boolean"
+            android:defaultValue="false" />
+    </fragment>
+</navigation>
