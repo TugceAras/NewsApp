@@ -73,7 +73,7 @@ plugins {
 }
 
 buildFeatures {
-     dataBinding true
+     viewBinding true
  }
 ```
 project build.gradle:
