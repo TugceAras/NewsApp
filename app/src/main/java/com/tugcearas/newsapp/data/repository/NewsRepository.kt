@@ -8,8 +8,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-// Benimki
-
 class NewsRepository @Inject constructor(private val database: ArticleDao, private val newsApi: NewsApi) {
 
     suspend fun getBreakingNewsFromApi(pageNumber:Int):Resource<List<Article>>{
