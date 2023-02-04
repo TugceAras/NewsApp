@@ -72,19 +72,19 @@ class SearchNewsFragment : Fragment() {
     }
 
     private fun observeData(){
-        searchViewModel.searchNews.observe(viewLifecycleOwner, Observer {response->
-            when(response){
-                is Resource.Success->{
+        searchViewModel.searchNews.observe(viewLifecycleOwner) { response ->
+            when (response) {
+                is Resource.Success -> {
                     response.data?.let {
                         searchAdapter.asyncListDiffer.submitList(it.articles)
                     }
                 }
-                else->{
-                    response.message?.let{message->
-                        Log.e(tagString,"Error an occurred! $message")
+                else -> {
+                    response.message?.let { message ->
+                        Log.e(tagString, "Error an occurred! $message")
                     }
                 }
             }
-        })
+        }
     }
 }
