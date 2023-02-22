@@ -95,5 +95,5 @@ plugins {
 
 <!-- API -->
 ## :point_down: API
-https://newsapi.org/
+- https://newsapi.org/
 
