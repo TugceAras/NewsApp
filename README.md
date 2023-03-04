@@ -49,7 +49,6 @@
     // Retrofit
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation "com.squareup.okhttp3:logging-interceptor:4.5.0"
 
     // Glide
     implementation 'com.github.bumptech.glide:glide:4.14.2'
@@ -96,5 +95,5 @@ plugins {
 
 <!-- API -->
 ## :point_down: API
-https://newsapi.org/
+- https://newsapi.org/
 
