@@ -17,5 +17,10 @@
     <string name="webViewToolbar">Details</string>
     <string name="homeToolbar">Breaking News</string>
     <string name="share">Share</string>
-
+    <string name="successfully_deleted_message">Successfully deleted!</string>
+    <string name="snackbar_undo">Undo</string>
+    <string name="error_occured">An error occured!</string>
+    <string name="article_added_message">Article added to favorite!</string>
+    <string name="article_already_saved">This article already saved!</string>
+    <string name="share_news_link">Share Link</string>
 </resources>

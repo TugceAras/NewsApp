@@ -25,12 +25,12 @@ class WebViewFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View{
         binding = FragmentWebViewBinding.inflate(inflater,container,false)
-        binding.webViewToolbar.appTitle.text = getText(R.string.webViewToolbar)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.webViewToolbar.appTitle.text = getText(R.string.webViewToolbar)
         webView()
         clickFloatingButton()
         checkFavoriteIcon()
@@ -72,10 +72,10 @@ class WebViewFragment : Fragment() {
         webViewModel.isAddedFavorite.observe(viewLifecycleOwner){
             if (it){
                 binding.floatingButton.setImageResource(R.drawable.fav_icon_fill)
-                requireContext().toastMessage("Article added to favorite")
+                requireContext().toastMessage(getString(R.string.article_added_message))
             }
             else{
-                requireContext().toastMessage("This article already saved!")
+                requireContext().toastMessage(getString(R.string.article_already_saved))
             }
         }
     }
@@ -91,7 +91,7 @@ class WebViewFragment : Fragment() {
             Intent(Intent.ACTION_SEND).apply {
                 type = "text/plain"
                 putExtra(Intent.EXTRA_TEXT, binding.webView.url)
-                startActivity(Intent.createChooser(this,"Share Link"))
+                startActivity(Intent.createChooser(this,getString(R.string.share_news_link)))
             }
         }
     }

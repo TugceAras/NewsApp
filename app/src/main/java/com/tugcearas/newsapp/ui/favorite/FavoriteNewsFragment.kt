@@ -13,6 +13,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.tugcearas.newsapp.R
 import com.tugcearas.newsapp.databinding.FragmentFavoriteNewsBinding
 import com.tugcearas.newsapp.ui.adapter.NewsAdapter
+import com.tugcearas.newsapp.util.extensions.gone
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,14 +28,16 @@ class FavoriteNewsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentFavoriteNewsBinding.inflate(inflater,container,false)
-        binding.favToolbar.appTitle.text = getString(R.string.favToolbar)
-        binding.favToolbar.shareIcon.visibility = View.GONE
-        binding.favToolbar.customToolbar.navigationIcon = null
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.favToolbar.apply {
+            appTitle.text = getString(R.string.favToolbar)
+            shareIcon.gone()
+            customToolbar.navigationIcon = null
+        }
         createRecyclerView()
         observeData()
         deleteProcess()
@@ -73,8 +76,11 @@ class FavoriteNewsFragment : Fragment() {
                 val position = viewHolder.adapterPosition
                 val article = favAdapter.asyncListDiffer.currentList[position]
                 favViewModel.deleteArticle(article)
-                Snackbar.make(requireView(), "Successfully deleted!", Snackbar.LENGTH_SHORT).apply {
-                    setAction("Undo") {
+                Snackbar.make(
+                    requireView(),
+                    getString(R.string.successfully_deleted_message),
+                    Snackbar.LENGTH_SHORT).apply {
+                    setAction(getString(R.string.snackbar_undo)) {
                         favViewModel.addArticle(article)
                     }.show()
                 }

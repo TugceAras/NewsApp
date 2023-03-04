@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.tugcearas.newsapp.R
 import com.tugcearas.newsapp.databinding.FragmentHomeBinding
 import com.tugcearas.newsapp.ui.adapter.NewsAdapter
+import com.tugcearas.newsapp.util.extensions.gone
 import com.tugcearas.newsapp.util.resource.Resource
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -27,14 +28,16 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
-        binding.homeToolbar.appTitle.text = getString(R.string.homeToolbar)
-        binding.homeToolbar.customToolbar.navigationIcon = null
-        binding.homeToolbar.shareIcon.visibility = View.GONE
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.homeToolbar.apply {
+            appTitle.text = getString(R.string.homeToolbar)
+            shareIcon.gone()
+            customToolbar.navigationIcon = null
+        }
         homeViewModel.getBreakingNews()
         createRecyclerView()
         observeData()
@@ -60,7 +63,7 @@ class HomeFragment : Fragment() {
                 }
                 else -> {
                     response.message?.let { message ->
-                        Log.e(tagString, "an error occurred: $message")
+                        Log.e(tagString, getString(R.string.error_occured)+message)
                     }
                 }
             }

@@ -8,3 +8,11 @@ import androidx.navigation.NavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 fun Context.toastMessage(msg:String) = Toast.makeText(this,msg,Toast.LENGTH_SHORT).show()
+
+fun View.visible(){
+    visibility = View.VISIBLE
+}
+
+fun View.gone(){
+    visibility = View.GONE
+}
